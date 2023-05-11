@@ -7,6 +7,14 @@ function App() {
   const [highScore, setHighScore] = useState(0)
   const [clickedCardIds, setClickedCardIds] = useState(new Set())
 
+  function recordClickedCard(cardId) {
+    setClickedCardIds((prevClickedCardIds) => {
+      const newClickedCardIds = new Set(prevClickedCardIds)
+      newClickedCardIds.add(cardId)
+      return newClickedCardIds
+    })
+  }
+
   function incrementScoreIfValid(cardId) {
     if (clickedCardIds.has(cardId)) {
       // card aleady clicked; restart game
@@ -15,11 +23,7 @@ function App() {
     } else {
       // new card clicked; increment score
       setCurrentScore((prevScore) => prevScore + 1)
-      setClickedCardIds((prevClickedCardIds) => {
-        const newClickedCardIds = new Set(prevClickedCardIds)
-        newClickedCardIds.add(cardId)
-        return newClickedCardIds
-      })
+      recordClickedCard(cardId)
     }
   }
 
