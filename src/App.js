@@ -6,10 +6,14 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0)
   const [highScore, setHighScore] = useState(0)
 
+  function incrementScoreIfValid() {
+    setCurrentScore((prevScore) => prevScore + 1)
+  }
+
   return (
     <div className="App">
       <Header currentScore={currentScore} highScore={highScore} />
-      <CardSection />
+      <CardSection incrementScoreIfValid={incrementScoreIfValid} />
     </div>
   )
 }
