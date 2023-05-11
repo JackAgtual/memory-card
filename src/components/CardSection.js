@@ -6,6 +6,7 @@ export default function CardSection({ incrementScoreIfValid }) {
     <div className={CardSectionCSS.cardContainer}>
       {cards.map((card) => (
         <div
+          key={card.id}
           onClick={() => incrementScoreIfValid(card.id)}
           className={CardSectionCSS.card}
         >
