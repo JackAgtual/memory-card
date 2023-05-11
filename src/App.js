@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import CardSection from './components/CardSection'
 
@@ -22,6 +22,14 @@ function App() {
       })
     }
   }
+
+  useEffect(() => {
+    if (currentScore > highScore) {
+      setHighScore(currentScore)
+    } else {
+      setHighScore(0)
+    }
+  }, [currentScore])
 
   return (
     <div className="App">
