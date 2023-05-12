@@ -36,7 +36,10 @@ function App() {
   return (
     <div className="App">
       <Header currentScore={currentScore} highScore={highScore} />
-      <CardSection incrementScoreIfValid={incrementScoreIfValid} />
+      <CardSection
+        incrementScoreIfValid={incrementScoreIfValid}
+        currentScore={currentScore}
+      />
     </div>
   )
 }

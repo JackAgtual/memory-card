@@ -1,4 +1,4 @@
-export const cards = [
+export const cardsData = [
   { name: 'card 1', id: 0 },
   { name: 'card 2', id: 1 },
   { name: 'card 3', id: 2 },
