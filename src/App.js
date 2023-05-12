@@ -30,8 +30,6 @@ function App() {
   useEffect(() => {
     if (currentScore > highScore) {
       setHighScore(currentScore)
-    } else {
-      setHighScore(0)
     }
   }, [currentScore])
 
