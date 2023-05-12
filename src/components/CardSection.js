@@ -29,7 +29,7 @@ export default function CardSection({ incrementScoreIfValid, currentScore }) {
           onClick={() => incrementScoreIfValid(card.id)}
           className={CardSectionCSS.card}
         >
-          {card.name}
+          {card.quote}
         </div>
       ))}
     </div>
