@@ -1,21 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Card from './Card'
 import CardSectionCSS from '../styles/CardSection.module.css'
-import { ACCESS_KEY } from '../ApiKeys'
 
-export default function CardSection({ incrementScoreIfValid, currentScore }) {
-  const numCards = 12
-  const [cards, setCards] = useState([])
-
+export default function CardSection({
+  cards,
+  setCards,
+  incrementScoreIfValid,
+  currentScore,
+  fetchImages,
+  numCards,
+}) {
   useEffect(() => {
-    const fetchImages = async () => {
-      // const url = `https://api.unsplash.com/photos/random?client_id=${ACCESS_KEY}&orientation=squarish&count=${numCards}`
-      const url = 'http://localhost:3500/data'
-      const response = await fetch(url)
-      const data = await response.json()
-      setCards(data)
-    }
-
     fetchImages()
   }, [])
 
