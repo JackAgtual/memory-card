@@ -19,21 +19,24 @@ export default function CardSection({ incrementScoreIfValid, currentScore }) {
     fetchImages()
   }, [])
 
-  // useEffect(() => {
-  //   // shuffle cards array
-  //   const idx = []
-  //   for (let i = 0; i < numCards; i++) {
-  //     idx.push(i)
-  //   }
+  useEffect(() => {
+    // shuffle cards array
 
-  //   const shuffledIdx = []
-  //   while (idx.length > 0) {
-  //     const randIdx = Math.floor(Math.random() * idx.length)
-  //     shuffledIdx.push(idx.splice(randIdx, 1)[0])
-  //   }
+    if (!cards.length) return // only shuffle if cards exist
 
-  //   setCards(shuffledIdx.map((idx) => cards[idx]))
-  // }, [currentScore])
+    const idx = []
+    for (let i = 0; i < numCards; i++) {
+      idx.push(i)
+    }
+
+    const shuffledIdx = []
+    while (idx.length > 0) {
+      const randIdx = Math.floor(Math.random() * idx.length)
+      shuffledIdx.push(idx.splice(randIdx, 1)[0])
+    }
+
+    setCards(shuffledIdx.map((idx) => cards[idx]))
+  }, [currentScore])
 
   return (
     <div className={CardSectionCSS.cardContainer}>
