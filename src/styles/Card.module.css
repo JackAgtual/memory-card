@@ -1,7 +1,8 @@
 .card {
   border: 1px solid black;
-  min-height: 10rem;
+  box-shadow: 5px 10px 10px;
   cursor: pointer;
-  width: clamp(150px, 20vw, 20vw);
+  width: clamp(200px, 15vw, 20vw);
+  aspect-ratio: 1;
   border-radius: 10px;
 }
