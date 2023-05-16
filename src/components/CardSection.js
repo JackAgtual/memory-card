@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Card from './Card'
 import CardSectionCSS from '../styles/CardSection.module.css'
 import { cardsData } from '../data/cards'
 
@@ -24,13 +25,11 @@ export default function CardSection({ incrementScoreIfValid, currentScore }) {
   return (
     <div className={CardSectionCSS.cardContainer}>
       {cards.map((card) => (
-        <div
+        <Card
           key={card.id}
-          onClick={() => incrementScoreIfValid(card.id)}
-          className={CardSectionCSS.card}
-        >
-          {card.quote}
-        </div>
+          incrementScoreIfValid={incrementScoreIfValid}
+          cardInfo={card}
+        />
       ))}
     </div>
   )
