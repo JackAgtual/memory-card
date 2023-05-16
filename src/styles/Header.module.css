@@ -1,0 +1,23 @@
+.header {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  justify-items: start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid black;
+  padding: 1rem 20px;
+}
+
+.title {
+  margin-top: 0;
+}
+.score {
+  display: grid;
+  justify-self: end;
+}
+
+.newCardsBtn {
+  border: none;
+  border-radius: 0.4rem;
+  background-color: rgba(128, 128, 128, 0.376);
+  cursor: pointer;
+}
