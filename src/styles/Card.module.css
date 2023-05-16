@@ -2,4 +2,6 @@
   border: 1px solid black;
   min-height: 10rem;
   cursor: pointer;
+  width: clamp(150px, 20vw, 20vw);
+  border-radius: 10px;
 }

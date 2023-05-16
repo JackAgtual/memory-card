@@ -1,26 +1,39 @@
 import { useState, useEffect } from 'react'
 import Card from './Card'
 import CardSectionCSS from '../styles/CardSection.module.css'
-import { cardsData } from '../data/cards'
+import { ACCESS_KEY } from '../ApiKeys'
 
 export default function CardSection({ incrementScoreIfValid, currentScore }) {
-  const [cards, setCards] = useState(cardsData)
+  const numCards = 12
+  const [cards, setCards] = useState([])
 
   useEffect(() => {
-    // shuffle cards array
-    const idx = []
-    for (let i = 0; i < cardsData.length; i++) {
-      idx.push(i)
+    const fetchImages = async () => {
+      // const url = `https://api.unsplash.com/photos/random?client_id=${ACCESS_KEY}&orientation=squarish&count=${numCards}`
+      const url = 'http://localhost:3500/data'
+      const response = await fetch(url)
+      const data = await response.json()
+      setCards(data)
     }
 
-    const shuffledIdx = []
-    while (idx.length > 0) {
-      const randIdx = Math.floor(Math.random() * idx.length)
-      shuffledIdx.push(idx.splice(randIdx, 1)[0])
-    }
+    fetchImages()
+  }, [])
 
-    setCards(shuffledIdx.map((idx) => cardsData[idx]))
-  }, [currentScore])
+  // useEffect(() => {
+  //   // shuffle cards array
+  //   const idx = []
+  //   for (let i = 0; i < numCards; i++) {
+  //     idx.push(i)
+  //   }
+
+  //   const shuffledIdx = []
+  //   while (idx.length > 0) {
+  //     const randIdx = Math.floor(Math.random() * idx.length)
+  //     shuffledIdx.push(idx.splice(randIdx, 1)[0])
+  //   }
+
+  //   setCards(shuffledIdx.map((idx) => cards[idx]))
+  // }, [currentScore])
 
   return (
     <div className={CardSectionCSS.cardContainer}>
