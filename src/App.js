@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import CardSection from './components/CardSection'
-import { ACCESS_KEY } from './ApiKeys'
+import Unsplash from './services/unsplash/Unsplash'
+
+const unsplash = new Unsplash()
 
 function App() {
   const [currentScore, setCurrentScore] = useState(0)
@@ -30,11 +32,8 @@ function App() {
     }
   }
 
-  const fetchImages = async () => {
-    const url = `https://api.unsplash.com/photos/random?client_id=${ACCESS_KEY}&orientation=squarish&count=${numCards}`
-    // const url = 'http://localhost:3500/data'
-    const response = await fetch(url)
-    const data = await response.json()
+  const handleFetchImages = async () => {
+    const data = await unsplash.fetchImages(numCards)
     setCards(data)
     setCurrentScore(0)
   }
@@ -50,14 +49,14 @@ function App() {
       <Header
         currentScore={currentScore}
         highScore={highScore}
-        fetchImages={fetchImages}
+        fetchImages={handleFetchImages}
         setCards={setCards}
       />
       <CardSection
         cards={cards}
         numCards={numCards}
         setCards={setCards}
-        fetchImages={fetchImages}
+        fetchImages={handleFetchImages}
         incrementScoreIfValid={incrementScoreIfValid}
         currentScore={currentScore}
       />
