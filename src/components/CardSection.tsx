@@ -2,6 +2,16 @@ import { useEffect } from 'react'
 import Card from './Card'
 import CardSectionCSS from '../styles/CardSection.module.css'
 
+type CardSectionProps = {
+  // TODO: Check types
+  cards: any[]
+  setCards: (cards: any[]) => void
+  incrementScoreIfValid: () => void
+  currentScore: number
+  fetchImages: () => void
+  numCards: number
+}
+
 export default function CardSection({
   cards,
   setCards,
@@ -9,7 +19,7 @@ export default function CardSection({
   currentScore,
   fetchImages,
   numCards,
-}) {
+}: CardSectionProps) {
   useEffect(() => {
     fetchImages()
   }, [])
