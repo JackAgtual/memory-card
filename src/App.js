@@ -50,7 +50,6 @@ function App() {
         currentScore={currentScore}
         highScore={highScore}
         fetchImages={handleFetchImages}
-        setCards={setCards}
       />
       <CardSection
         cards={cards}
