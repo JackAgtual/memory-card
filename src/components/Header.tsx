@@ -1,8 +1,12 @@
 import HeaderCSS from '../styles/Header.module.css'
 
-export default function Header(props) {
-  const { currentScore, highScore, fetchImages } = props
+type HeaderProps = {
+  currentScore: number
+  highScore: number
+  fetchImages: () => void
+}
 
+export default function Header({ currentScore, highScore, fetchImages }: HeaderProps) {
   return (
     <div className={HeaderCSS.header}>
       <div>

@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import CardSection from './components/CardSection'
+import { Random } from 'unsplash-js/dist/methods/photos/types'
+
 import Unsplash from './services/unsplash/Unsplash'
 
 const unsplash = new Unsplash()
 
 function App() {
-  const [currentScore, setCurrentScore] = useState(0)
-  const [highScore, setHighScore] = useState(0)
-  const [clickedCardIds, setClickedCardIds] = useState(new Set())
-  const [cards, setCards] = useState([])
+  const [currentScore, setCurrentScore] = useState<number>(0)
+  const [highScore, setHighScore] = useState<number>(0)
+  const [clickedCardIds, setClickedCardIds] = useState<Set<string>>(new Set())
+  const [cards, setCards] = useState<Random[]>([])
   const numCards = 12
 
-  function recordClickedCard(cardId) {
+  function recordClickedCard(cardId: string) {
     setClickedCardIds((prevClickedCardIds) => {
       const newClickedCardIds = new Set(prevClickedCardIds)
       newClickedCardIds.add(cardId)
@@ -20,7 +22,7 @@ function App() {
     })
   }
 
-  function incrementScoreIfValid(cardId) {
+  function incrementScoreIfValid(cardId: string) {
     if (clickedCardIds.has(cardId)) {
       // card aleady clicked; restart game
       setCurrentScore(0)
@@ -50,7 +52,6 @@ function App() {
         currentScore={currentScore}
         highScore={highScore}
         fetchImages={handleFetchImages}
-        setCards={setCards}
       />
       <CardSection
         cards={cards}
