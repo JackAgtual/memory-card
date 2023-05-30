@@ -3,7 +3,7 @@ import HeaderCSS from '../styles/Header.module.css'
 type HeaderProps = {
   currentScore: number
   highScore: number
-  fetchImages: () => void // TODO: check function signature
+  fetchImages: () => void
 }
 
 export default function Header({ currentScore, highScore, fetchImages }: HeaderProps) {

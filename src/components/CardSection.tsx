@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
 import Card from './Card'
 import CardSectionCSS from '../styles/CardSection.module.css'
+import { Random } from 'unsplash-js/dist/methods/photos/types'
 
 type CardSectionProps = {
-  // TODO: Check types
-  cards: any[]
-  setCards: (cards: any[]) => void
-  incrementScoreIfValid: () => void
+  cards: Random[]
+  setCards: React.Dispatch<React.SetStateAction<Random[]>>
+  incrementScoreIfValid: (cardId: string) => void
   currentScore: number
-  fetchImages: () => void
+  fetchImages: () => Promise<void>
   numCards: number
 }
 

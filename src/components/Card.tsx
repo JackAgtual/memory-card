@@ -1,11 +1,8 @@
+import { Random } from 'unsplash-js/dist/methods/photos/types'
 import CardCSS from '../styles/Card.module.css'
 
 type CardProps = {
-  // TODO: check types
-  cardInfo: {
-    id: string
-    urls: { small: string }
-  }
+  cardInfo: Random
   incrementScoreIfValid: (cardId: string) => void
 }
 
